@@ -1,4 +1,5 @@
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
 // GitHub Actions provides GITHUB_REPOSITORY as "owner/repo". Reading it means the site keeps
@@ -11,5 +12,9 @@ export default defineConfig({
   site: process.env.SITE_URL ?? `https://${owner}.github.io`,
   base: process.env.BASE_PATH ?? (isUserSite ? "/" : `/${repo}/`),
   output: "static",
-  integrations: [react()],
+  integrations: [
+    react(),
+    // The 404 page is an error surface, not content: keep it out of the sitemap.
+    sitemap({ filter: (page) => !page.endsWith("/404") }),
+  ],
 });

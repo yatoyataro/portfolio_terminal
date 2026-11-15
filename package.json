@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^7.1.7",
+    "@astrojs/sitemap": "^3.7.5",
     "@fontsource/jetbrains-mono": "^5.0.0",
     "@fontsource/press-start-2p": "^5.0.0",
     "astro": "^7.4.10",

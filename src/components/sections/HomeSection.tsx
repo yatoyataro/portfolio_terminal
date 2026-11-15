@@ -53,12 +53,14 @@ export function HomeSection({ children }: HomeSectionProps) {
             <dt>LOCATION</dt>
             <dd>{profile.location}</dd>
           </div>
-          <div>
-            <dt>EMAIL</dt>
-            <dd>
-              <a href={`mailto:${profile.email}`}>{profile.email}</a>
-            </dd>
-          </div>
+          {!profile.formEndpoint && (
+            <div>
+              <dt>EMAIL</dt>
+              <dd>
+                <a href={`mailto:${profile.email}`}>{profile.email}</a>
+              </dd>
+            </div>
+          )}
           <div>
             <dt>GITHUB</dt>
             <dd>
