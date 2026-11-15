@@ -74,7 +74,7 @@ const svg = `
   <!-- footer -->
   <line x1="72" y1="528" x2="1128" y2="528" stroke="${COLORS.border}" stroke-width="2"/>
   <text x="72" y="568" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="${COLORS.link}">${GITHUB}</text>
-  <text x="1128" y="568" text-anchor="end" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="${COLORS.textSecondary}">OPEN_TO_BACKEND_ROLES</text>
+  <text x="1128" y="568" text-anchor="end" font-family="Consolas, 'Courier New', monospace" font-size="26" fill="${COLORS.textSecondary}">OPEN_TO_OPPORTUNITIES</text>
 </svg>`;
 
 await mkdir(dirname(outFile), { recursive: true });
