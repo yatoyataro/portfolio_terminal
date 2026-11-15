@@ -12,6 +12,15 @@ export interface Project {
   repoUrl?: string;
   liveUrl?: string;
   /**
+   * Direct-download file for this project, e.g. a raw GitHub permalink
+   * ("https://raw.githubusercontent.com/OWNER/REPO/BRANCH/path/file.exe"). Browsers save it
+   * because raw serves binaries as application/octet-stream. Use the /raw/ URL, never the
+   * /blob/ page URL (that renders a web page, not a download).
+   */
+  downloadUrl?: string;
+  /** Button text for the download action, e.g. "DOWNLOAD_EXE". Only used with downloadUrl. */
+  downloadLabel?: string;
+  /**
    * ONLINE = has a live demo (liveUrl), SOURCE_AVAILABLE = public repo only,
    * IN_PROGRESS = still being built, ARCHIVED = no longer maintained.
    */
@@ -121,6 +130,9 @@ export const projects: Project[] = [
       "Default image quality of 90.",
     ],
     repoUrl: "https://github.com/yatoyataro/universal_image_converter",
+    downloadUrl:
+      "https://raw.githubusercontent.com/yatoyataro/universal_image_converter/main/dist/Universal_image_converter.exe",
+    downloadLabel: "DOWNLOAD_EXE",
     status: "SOURCE_AVAILABLE",
   },
   {

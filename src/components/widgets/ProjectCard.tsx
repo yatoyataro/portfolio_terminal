@@ -51,7 +51,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </ul>
         </details>
 
-        {(project.repoUrl || project.liveUrl) && (
+        {(project.repoUrl || project.liveUrl || project.downloadUrl) && (
           <div className="project-actions">
             {project.repoUrl && (
               <Button
@@ -63,6 +63,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 aria-label={`View source code for ${project.name} (opens in a new tab)`}
               >
                 [ {">"} VIEW_SOURCE ]
+              </Button>
+            )}
+            {project.downloadUrl && (
+              <Button
+                variant="primary"
+                as="a"
+                href={project.downloadUrl}
+                download
+                aria-label={`Download the ${project.name} file`}
+              >
+                [ {">"} {project.downloadLabel ?? "DOWNLOAD"} ]
               </Button>
             )}
             {project.liveUrl && (
