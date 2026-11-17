@@ -7,7 +7,7 @@ deployed to GitHub Pages with GitHub Actions.
 
 https://github.com/user-attachments/assets/portfolio-intro.mp4
 
-*Terminal portfolio boot sequence (23s)*
+_Terminal portfolio boot sequence (23s)_
 
 Actually, for GitHub's native video playback in README, use this Markdown syntax:
 
@@ -15,7 +15,7 @@ Actually, for GitHub's native video playback in README, use this Markdown syntax
 
 ![Terminal portfolio intro](assets/portfolio-intro.mp4)
 
-*Terminal portfolio boot sequence (23s)*
+_Terminal portfolio boot sequence (23s)_
 
 Live site: https://yatoyataro.github.io/portfolio_terminal/
 
