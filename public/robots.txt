@@ -1,0 +1,8 @@
+# robots.txt for the terminal portfolio.
+# NOTE: the Sitemap line hardcodes the GitHub Pages URL. If SITE_URL ever moves to a
+# custom domain, update the line below to match.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://yatoyataro.github.io/portfolio_terminal/sitemap-index.xml

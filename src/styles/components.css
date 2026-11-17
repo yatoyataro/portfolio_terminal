@@ -60,13 +60,6 @@
   white-space: nowrap;
 }
 
-/* The three diagnostics tiles are too narrow for the extra label below ~960px */
-@media (max-width: 959px) {
-  .terminal-box__bar-meta {
-    display: none;
-  }
-}
-
 /* Nav variant: on phones/tablets it is a bare row (no border, no title);
    at 1280px+ it becomes a normal terminal box in the sidebar. */
 .terminal-box--nav {
@@ -324,13 +317,6 @@
   background: #334155;
 }
 
-.visual-id {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 120px;
-}
-
 .console-log {
   height: 176px;
   padding: 12px;
@@ -387,10 +373,6 @@
 }
 
 @media (min-width: 1280px) {
-  .visual-id {
-    height: 170px;
-  }
-
   .console-log {
     height: 280px;
     padding: 16px 14px;
@@ -531,6 +513,85 @@
 .direct-contact__result {
   color: var(--text-secondary);
   font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Transmission popup: a small terminal window that confirms or fails a form
+   submission. Fixed to the viewport so it cannot be missed at any scroll
+   position. Entrance animation lives in animations.css (reduced-motion aware).
+   ========================================================================== */
+.transmission-popup {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 50;
+  width: min(26rem, calc(100vw - 2rem));
+  border: 1px solid var(--border-box);
+  background: var(--bg-canvas);
+  box-shadow: 0 0 0 4px rgba(5, 7, 10, 0.7);
+  outline: none;
+}
+
+.transmission-popup__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.625rem;
+  border-bottom: 1px solid var(--border-box);
+  background: var(--bg-console-header);
+}
+
+.transmission-popup__dot {
+  width: 8px;
+  height: 8px;
+  background: var(--border-box);
+}
+
+.transmission-popup__bar-title {
+  margin-left: auto;
+  color: var(--text-secondary);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.transmission-popup__body {
+  padding: 0.875rem 1rem 1rem;
+}
+
+.transmission-popup__title {
+  margin: 0 0 0.5rem;
+  color: var(--link);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.transmission-popup__title--fail {
+  color: var(--warning);
+}
+
+.transmission-popup__desc {
+  margin: 0 0 0.875rem;
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+
+/* 404 crash log lines (src/pages/404.astro) */
+.crash-line {
+  margin: 0 0 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.crash-line--accent {
+  color: var(--link);
+}
+
+.crash-line--muted {
+  color: var(--text-muted);
 }
 
 .tag-terminal {

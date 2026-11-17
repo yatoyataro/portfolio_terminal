@@ -3,6 +3,20 @@
 A terminal-styled personal portfolio built with [Astro](https://astro.build) and React,
 deployed to GitHub Pages with GitHub Actions.
 
+## Preview
+
+https://github.com/user-attachments/assets/portfolio-intro.mp4
+
+_Terminal portfolio boot sequence (23s)_
+
+Actually, for GitHub's native video playback in README, use this Markdown syntax:
+
+## Preview
+
+![Terminal portfolio intro](assets/portfolio-intro.mp4)
+
+_Terminal portfolio boot sequence (23s)_
+
 Live site: https://yatoyataro.github.io/portfolio_terminal/
 
 ## Preview
@@ -16,7 +30,7 @@ _Terminal portfolio boot sequence (23s)_
 | Command           | What it does                                                        |
 | ----------------- | ------------------------------------------------------------------- |
 | `npm install`     | Install dependencies                                                |
-| `npm run dev`     | Start the dev server at `http://localhost:4321/initial_astro_test/` |
+| `npm run dev`     | Start the dev server at `http://localhost:4321/portfolio_terminal/` |
 | `npm run build`   | Build the production site into `dist/`                              |
 | `npm run preview` | Serve the production build locally                                  |
 | `npm run check`   | Type-check Astro, TypeScript and React files                        |
@@ -33,6 +47,8 @@ All text lives in `src/data/`:
 - `profile.ts`: name, title, contact details, bio (set `resumeFile` to show a CV button)
 - `projects.ts`: project cards
 - `skills.ts`, `experience.ts`: the Intel section
+- `src/assets/portrait.jpg`: the hero portrait (square, about 1200px). Strip camera metadata
+  before committing. Its alt text and the card's text lines live in `profile.ts`.
 
 Colours and spacing are CSS variables in `src/styles/global.css`.
 

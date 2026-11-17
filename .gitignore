@@ -31,3 +31,11 @@ desktop.ini
 # Local deployment configuration
 .vercel/
 .netlify/
+
+# Patch files used to apply changes; never commit them
+*.patch
+
+# Local working notes (not part of the site)
+PROJECT-REVIEW.md
+PROJECT-SUMMARY.md
+/docs/

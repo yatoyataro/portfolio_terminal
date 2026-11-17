@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Print stylesheet — the site as a clean paper/PDF document for recruiters.
+   Loaded last by index.astro and 404.astro so it overrides everything.
+
+   The whole theme flows through the :root tokens, so the light theme is a
+   token override, not a pile of per-component literals. Dark text values are
+   essential: browsers drop background colours when printing by default, and
+   the dark theme would otherwise print white-on-white.
+   ========================================================================== */
+@media print {
+  :root {
+    color-scheme: light;
+
+    --bg-canvas: #ffffff;
+    --bg-surface: #ffffff;
+    --bg-console-header: #f1f5f9;
+    --bg-active-tab: #f1f5f9;
+
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #475569;
+    --text-inverted: #0f172a;
+    --text-on-accent: #ffffff;
+
+    --link: #1d4ed8;
+    --link-hover: #1d4ed8;
+
+    --border-structural: #cbd5e1;
+    --border-box: #cbd5e1;
+    --border-divider: #e2e8f0;
+    --border-control: #94a3b8;
+  }
+
+  body {
+    background: #ffffff;
+    color: #0f172a;
+  }
+
+  /* Screen-only chrome: navigation chrome, decorative telemetry, the contact
+     form (dead paper) and its popup, plus the hero CONTACT button that jumps
+     to that form. External links (GitHub/LinkedIn/CV/download) stay: they
+     carry real information on paper. */
+  .skip-link,
+  .top-bar,
+  .left-sidebar,
+  .right-sidebar,
+  .bottom-footer,
+  .transmission-popup,
+  .console-cursor,
+  #uplink,
+  a[href="#uplink"] {
+    display: none;
+  }
+
+  /* Printed pages cannot click a collapsed FEATURES list open: expand every
+     collapsed <details>. Harmless for ones already open. (Needs a modern
+     browser; Chrome 118+ / Firefox support this pattern.) */
+  details:not([open]) > *:not(summary) {
+    display: block;
+  }
+
+  /* Pagination care: keep boxes intact and headers attached to their content. */
+  .terminal-box,
+  .project-card {
+    break-inside: avoid;
+  }
+
+  .section-header {
+    break-after: avoid;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+}
