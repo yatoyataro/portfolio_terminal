@@ -5,15 +5,7 @@ deployed to GitHub Pages with GitHub Actions.
 
 ## Preview
 
-https://github.com/user-attachments/assets/portfolio-intro.mp4
-
-_Terminal portfolio boot sequence (23s)_
-
-Actually, for GitHub's native video playback in README, use this Markdown syntax:
-
-## Preview
-
-![Terminal portfolio intro](assets/portfolio-intro.mp4)
+[![Terminal portfolio intro](assets/portfolio-intro.gif)](assets/portfolio-intro.mp4)
 
 _Terminal portfolio boot sequence (23s)_
 
