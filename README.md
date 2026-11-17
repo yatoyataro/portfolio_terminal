@@ -5,6 +5,12 @@ deployed to GitHub Pages with GitHub Actions.
 
 Live site: https://yatoyataro.github.io/portfolio_terminal/
 
+## Preview
+
+[![Terminal portfolio intro](assets/portfolio-intro.gif)](assets/portfolio-intro.mp4)
+
+_Terminal portfolio boot sequence (23s)_
+
 ## Commands
 
 | Command           | What it does                                                        |
