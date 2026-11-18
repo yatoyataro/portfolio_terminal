@@ -2,6 +2,7 @@ import { ProficiencyBar } from "@components/widgets/ProficiencyBar";
 import { TerminalBox } from "@components/widgets/TerminalBox";
 import { certifications, education, internship } from "@data/experience";
 import { skills } from "@data/skills";
+import { Fragment } from "react";
 
 export function IntelSection() {
   return (
@@ -66,16 +67,23 @@ export function IntelSection() {
       </TerminalBox>
 
       <TerminalBox title="SYSTEM_CAPABILITIES // PROFICIENCY_MATRIX">
+        {/* One shared grid: each category is a full-width divider row and its skills flow
+            into the same columns, so short categories never leave blank space. */}
         <div className="skills-grid">
           {skills.map((category) => (
-            <div key={category.category}>
-              <h4 className="subhead">{category.category}</h4>
+            <Fragment key={category.category}>
+              <h4 className="skills-divider">
+                <span className="skills-divider__label">{category.category}</span>
+                <span className="skills-divider__count" aria-hidden="true">
+                  [{String(category.items.length).padStart(2, "0")}]
+                </span>
+              </h4>
               {[...category.items]
                 .sort((a, b) => b.proficiency - a.proficiency)
                 .map((skill) => (
                   <ProficiencyBar key={skill.name} name={skill.name} pct={skill.proficiency} />
                 ))}
-            </div>
+            </Fragment>
           ))}
         </div>
       </TerminalBox>

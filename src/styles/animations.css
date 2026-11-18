@@ -41,6 +41,103 @@
     background-color 0.3s ease;
 }
 
+/* Skill bars: fill on first scroll into view (scripts/skillReveal.ts).
+   The "hidden" state only exists when ALL of these hold, so the bars are
+   simply full otherwise:
+   - html.js-reveal: set by an inline head script, removed again if the reveal
+     script cannot run (no JavaScript / no IntersectionObserver / bfcache restore)
+   - screen media: printed pages always show full bars
+   - no-preference for reduced motion: those visitors get full bars, no motion
+   Cost: cells animate opacity/transform (compositor only); segments animate
+   colours on 10px boxes. No will-change: ~500 promoted layers would cost more. */
+@keyframes skill-cell-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Each filled segment lights up blue like a terminal cursor block, then settles. */
+@keyframes skill-segment-fill {
+  0% {
+    border-color: var(--border-control);
+    background: var(--bg-canvas);
+  }
+
+  45% {
+    border-color: var(--link);
+    background: var(--link);
+  }
+
+  100% {
+    border-color: var(--text-primary);
+    background: var(--text-primary);
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .js-reveal .skills-grid .proficiency-bar:not(.is-revealed) {
+    opacity: 0;
+  }
+
+  .js-reveal .skills-grid .proficiency-bar:not(.is-revealed) .proficiency-segment.filled {
+    border-color: var(--border-control);
+    background: var(--bg-canvas);
+  }
+
+  /* --reveal-delay: row stagger, set per cell by skillReveal.ts.
+     --seg: segment position, so the bar fills left to right (40ms per segment). */
+  .js-reveal .skills-grid .proficiency-bar.is-revealed {
+    animation: skill-cell-in 0.3s ease-out var(--reveal-delay, 0ms) both;
+  }
+
+  .js-reveal .skills-grid .proficiency-bar.is-revealed .proficiency-segment.filled {
+    animation: skill-segment-fill 0.28s ease-out
+      calc(var(--reveal-delay, 0ms) + 120ms + var(--seg, 0) * 40ms) both;
+  }
+
+  .proficiency-segment:nth-child(2) {
+    --seg: 1;
+  }
+
+  .proficiency-segment:nth-child(3) {
+    --seg: 2;
+  }
+
+  .proficiency-segment:nth-child(4) {
+    --seg: 3;
+  }
+
+  .proficiency-segment:nth-child(5) {
+    --seg: 4;
+  }
+
+  .proficiency-segment:nth-child(6) {
+    --seg: 5;
+  }
+
+  .proficiency-segment:nth-child(7) {
+    --seg: 6;
+  }
+
+  .proficiency-segment:nth-child(8) {
+    --seg: 7;
+  }
+
+  .proficiency-segment:nth-child(9) {
+    --seg: 8;
+  }
+
+  .proficiency-segment:nth-child(10) {
+    --seg: 9;
+  }
+}
+
 /* Reduced motion: switch off exactly the things that move, instead of a global
    animation-duration override. JavaScript-driven updates are paused in ticker.ts. */
 @media (prefers-reduced-motion: reduce) {
@@ -52,7 +149,9 @@
   .network-bar,
   .btn-terminal,
   .site-nav a,
-  .connect-nav a {
+  .connect-nav a,
+  .proficiency-bar,
+  .proficiency-track::after {
     transition: none;
   }
 }
