@@ -14,13 +14,18 @@ export function ProficiencyBar({ name, pct }: ProficiencyBarProps) {
   }));
 
   return (
-    <div className="proficiency-bar">
+    // data-reveal: picked up by scripts/skillReveal.ts to fill the bar when it scrolls into view.
+    <div className="proficiency-bar" data-reveal>
       <div className="proficiency-header">
         <span className="proficiency-name">{name}</span>
         <span className="proficiency-pct">{pct}%</span>
       </div>
-      {/* The percentage above carries the meaning, so the bar is decorative. */}
-      <div className="proficiency-track" aria-hidden="true">
+      {/* The percentage above carries the meaning, so the bar (and its hover tooltip) is decorative. */}
+      <div
+        className="proficiency-track"
+        aria-hidden="true"
+        data-tooltip={`${filledCount}/${SEGMENT_COUNT} segments · ${pct}%`}
+      >
         {segments.map((segment) => (
           <div
             key={segment.id}

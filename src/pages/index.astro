@@ -60,6 +60,22 @@ const uplinkProps = profile.formEndpoint
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+
+    <!-- Before first paint: lets the skill bars start empty and fill on scroll
+         (scripts/skillReveal.ts). Without JavaScript the class is never added and
+         the bars are simply full. Failsafe: if the reveal script has not started
+         within 4s (bundle failed or very slow network), drop the class so the
+         skills are never left hidden. -->
+    <script is:inline>
+      (() => {
+        if (!("IntersectionObserver" in window)) return;
+        const root = document.documentElement;
+        root.classList.add("js-reveal");
+        setTimeout(() => {
+          if (!root.hasAttribute("data-reveal-ready")) root.classList.remove("js-reveal");
+        }, 4000);
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
